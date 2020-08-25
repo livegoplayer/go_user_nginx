@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    go_server_common:
+      build: ./
+      container_name: go_user_server
+      environment:
+         USER_SERVER_NAME: "www.52db.club"
+         RESTY_CONFIG_OPTIONS_MORE: "--with-echo_nginx_module"
+      extra_hosts:
+         - "www.52db.club:127.0.0.1"
+      ports:
+         - "80:80"
+         # - "81:81"
+         # - "8888:8888"
+         - "8080:8080"
+      volumes:
+         - ../:/apps
+         - ./conf/nginx:/etc/nginx
+         # 日志存放路径，需要同级目录创建本目录
+         - ../logs:/apps/logs
+         - ./conf/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx_template.conf
+      command: /sh/start.sh
+
+

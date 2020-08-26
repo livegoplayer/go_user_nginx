@@ -18,6 +18,7 @@ services:
          - ./consul-template:/consul-template
          - ./consul-template/consul-template:/usr/local/bin/consul-template
          # 日志存放路径，需要同级目录创建本目录
+         - ./supervisor:/supervisor
          - ../logs:/apps/logs
          - ./conf/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx_template.conf
       command: /sh/start.sh

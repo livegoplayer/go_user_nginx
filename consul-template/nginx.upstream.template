@@ -1,0 +1,27 @@
+//nginx.upstream.template
+
+{{- range services -}}
+{{$name := .Name}}
+{{$service := service .Name}}
+{{- if in .Tags "http" -}}
+upstream {{$name}}_upstearm {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}
+  server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{end}}
+}{{end}}
+{{end}}
+
+{{- range services -}}
+{{$name := .Name}}
+{{$service := service .Name}}
+{{- if in .Tags "rpc" -}}
+upstream {{$name}}_upstearm {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}
+  server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{end}}
+  keepalive 15;
+}{{end}}
+{{end}}
+

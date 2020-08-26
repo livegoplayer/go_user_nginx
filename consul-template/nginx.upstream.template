@@ -1,4 +1,4 @@
-//nginx.upstream.template
+#nginx.upstream.template
 
 {{- range services -}}
 {{$name := .Name}}

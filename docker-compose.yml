@@ -7,6 +7,9 @@ services:
       environment:
          USER_SERVER_NAME: "www.52db.club"
          RESTY_CONFIG_OPTIONS_MORE: "--with-echo_nginx_module"
+      ports:
+         - "80"
+         - "8080"
       network_mode: host
       volumes:
          - ../:/apps

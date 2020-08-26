@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-    go_server_common:
+    go_server_nginx:
       build: ./
-      container_name: go_user_server
+      container_name: go_user_nginx
       environment:
          USER_SERVER_NAME: "www.52db.club"
          RESTY_CONFIG_OPTIONS_MORE: "--with-echo_nginx_module"

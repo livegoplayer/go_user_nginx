@@ -14,6 +14,9 @@ services:
       volumes:
          - ../:/apps
          - ./conf/nginx:/etc/nginx
+         #consul-template
+         - ./consul-template:/consul-template
+         - ./consul-template/consul-template:/usr/local/bin/consul-template
          # 日志存放路径，需要同级目录创建本目录
          - ../logs:/apps/logs
          - ./conf/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx_template.conf

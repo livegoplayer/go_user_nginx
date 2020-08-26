@@ -22,7 +22,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         openresty-opm \
     && apt-get install -y bc \
-    && apt-get install -y golang \
     && apt-get install -y git \
     && apt-get -yqq install -y python-pip \ 
     && rm -rf /var/lib/apt/lists/*
@@ -52,10 +51,4 @@ RUN chmod +x ./sh/*.sh
 #复制Supervisor文件
 RUN mkdir /supervisor
 COPY ./supervisor /supervisor
-
-#调试目录
-RUN mkdir /test
-
-#go env
-ENV GOPROXY=https://goproxy.io
 

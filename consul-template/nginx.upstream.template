@@ -3,7 +3,7 @@
 {{- range services -}}
 {{$name := .Name}}
 {{$service := service .Name}}
-{{- if in .Tags "http" && in .Tags "go_user" -}}
+{{- if in .Tags "http" and in .Tags "go_user" -}}
 upstream {{$name}}_upstearm {
   zone upstream-{{$name}} 64k;
   {{range $service}}
@@ -15,7 +15,7 @@ upstream {{$name}}_upstearm {
 {{- range services -}}
 {{$name := .Name}}
 {{$service := service .Name}}
-{{- if in .Tags "rpc" && in .Tags "go_user_rpc" -}}
+{{- if in .Tags "rpc" and in .Tags "go_user_rpc" -}}
 upstream {{$name}}_upstearm {
   zone upstream-{{$name}} 64k;
   {{range $service}}
